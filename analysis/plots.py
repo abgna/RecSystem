@@ -37,6 +37,9 @@ def num_of_votes_by_users(data : rec_data):
 
 
 def plot_count_by_genre(movies: rec_data):
+    """
+    Plots the bar for Genres
+    """
     plt.figure(figsize=(20,7))
     generlist = movies['genres'].apply(lambda generlist_movie : str(generlist_movie).split("|"))
     geners_count = {}
