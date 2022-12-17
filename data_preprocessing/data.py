@@ -2,12 +2,14 @@ import os
 import numpy as np
 import pandas as pd
 
-class rec_data:
-    #declaring the datasets
+    """
+    Data for recommendation system
+    """
     path_movies = '/Users/nareabgaryan/Desktop/n/data/movies.csv'
     path_ratings = "/Users/nareabgaryan/Desktop/n/data/ratings.csv"
 
     def __init__(self,movies = None,ratings = None,data = None):
+
         self.movies = movies
         self.ratings = ratings
         self.data = data
@@ -16,6 +18,11 @@ class rec_data:
 
 
     def read_data(self):
+        """
+        Args:
+            location of movies and ratings csv
+            which should contain movies.csv and ratings.csv
+        """
         self.movies = pd.read_csv(self.path_movies)
         self.ratings = pd.read_csv(self.path_ratings)
         #merge the data on given column
@@ -25,16 +32,35 @@ class rec_data:
 
    
     def shape(self):
-        return self.data.shape
+        """
+        Returns:
+            shape: shape
+        """ 
+return self.data.shape
 
     def num_of_null(self):
+       """null sum of columns
+        Returns:
+            list: list of integers
+        """
         return self.data.isnull().sum()
 
     def num_of_movies(self,column = 'movieId'):
+        """
+        returns num of unique values
+        Args:
+            column (str):  Defaults to 'movieId'.
+        Returns:
+            list: list of nulls
+        """  
         return self.data[column].nunique()
 
 
     def head(self):
+        """
+        Returns:
+            DataFrame: head of DataFrame
+        """ 
         return self.data.head()
 
     def set_filter_params(self, movie_rating_thres, user_rating_thres):
